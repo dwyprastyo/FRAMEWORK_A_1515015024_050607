@@ -17,3 +17,6 @@ Route::get('/', function () {
 Route::get('/public', function () {
     return ('Nama Saya : Dwy Prastyo');
 });
+Route::get('/pengguna', function () {
+    return ('Hello World dari Dwy Prastyo');
+});
