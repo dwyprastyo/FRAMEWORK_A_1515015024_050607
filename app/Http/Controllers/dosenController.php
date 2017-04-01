@@ -9,23 +9,66 @@ use App\dosen;
 
 class dosenController extends Controller
 {
-     public function awal(){
-    	return "Hallo";
+    //  public function awal(){
+    // 	return "Hallo";
+    // }
+
+    // public function tambah(){
+    // 	return $this->simpan();
+    // }
+
+    // public function simpan(){
+
+    // 	$Dosen = new dosen();
+    // 	$Dosen->nama = 'Dwy_Prastyo';
+    // 	$Dosen->nip = '1515015024';
+    // 	$Dosen->alamat = 'jl.lumba-lumba,Gg.4 samarinda ilir';
+    // 	$Dosen->pengguna_id = 1;
+    // 	$Dosen->save();
+    // 	return "Data dengan{$Dosen->nama} telah disimpan";
+    // }
+
+    public function awal()
+    {
+        return view('dosen.awal',['data'=>dosen::all()]);
     }
-
-    public function tambah(){
-    	return $this->simpan();
+    public function tambah()
+    {
+        return view('dosen.tambah');
     }
-
-    public function simpan(){
-
-    	$Dosen = new dosen();
-    	$Dosen->nama = 'Dwy_Prastyo';
-    	$Dosen->nip = '1515015024';
-    	$Dosen->alamat = 'jl.lumba-lumba,Gg.4 samarinda ilir';
-    	$Dosen->pengguna_id = 1;
-    	$Dosen->save();
-    	return "Data dengan{$Dosen->nama} telah disimpan";
+    public function simpan(Request $input)
+    {
+        $dosen = new dosen();
+        $dosen->nama=$input->nama;
+        $dosen->nip =$input->nip;
+        $dosen->alamat =$input->alamat;
+        $informasi=$dosen->save() ? 'Berhasil simpan data':'Gagal simpan data';
+        return redirect('dosen')->with(['informasi'=>$informasi]);
+    }
+    public function edit($id)
+    {
+        $dosen = dosen::find($id);
+        return view('dosen.edit')->with(array('dosen'=>$dosen));
+    }
+    public function lihat($id)
+    {
+        $dosen= dosen::find($id);
+        return view('dosen.lihat')->with(array('dosen' =>$dosen));
+    }
+    public function update($id,Request $input)
+    {
+        $dosen = dosen::find($id);
+        $dosen->nama=$input->nama;
+        $dosen->nip =$input->nip;
+        $dosen->alamat =$input->alamat;
+        $informasi=$dosen->save() ? 'Berhasil update data':'Gagal update data';
+        return redirect('dosen')->with(['informasi'=>$informasi]);
+    }
+    public function hapus($id)
+    {
+        $dosen=dosen::find($id);
+        $informasi=$dosen->delete() ? 'Berhasil hapus data' : 'Gagal hapus data';
+        return redirect('dosen')->with(['informasi'=>$informasi]);
     }
 }
 

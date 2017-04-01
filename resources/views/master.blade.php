@@ -97,7 +97,7 @@
 	</div>
 	<nav class="navbar navbar-default navbar-fixed-bottom">
 		<footer class="container">
-			create by <a href="http://twitter.com/fannyaqmarina"><span><i class="fa fa-twitter" style="color:#1da1f2"></i>@fannyaqmarina</span></a>
+			create by <a href="http://facebook.com/Dwy Prastyo"><span><i class="fa fa-twitter" style="color:#1da1f2"></i>@Dwy Prastyo</span></a>
 		</footer>
 	</nav>
 	<script type="text/javascript" src="{{asset('component/jquery/dist/jquery.min.js')}}"></script>

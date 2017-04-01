@@ -26,4 +26,6 @@ class mahasiswaController extends Controller
     	$mahasiswa->save();
     	return "Data dengan{$mahasiswa->nama} telah disimpan";
     }
+
+    
 }
