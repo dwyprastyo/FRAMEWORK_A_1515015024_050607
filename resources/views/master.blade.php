@@ -48,7 +48,7 @@
 							</li>
 							<li class="divider"></li>
 							<li>
-								<a href="{{url('jadwal_matakuliah')}}">Jadwal Mahasiswa</a>
+								<a href="{{url('jadwal_matkul')}}">Jadwal Mahasiswa</a>
 							</li>
 						</ul>
 					</li>

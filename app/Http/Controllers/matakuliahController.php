@@ -26,7 +26,7 @@ class matakuliahController extends Controller
     // 	return "Data dengan{$matakuliah->title} telah disimpan";
     // }
 
-    public function awal()
+   public function awal()
     {
         return view('matakuliah.awal',['data'=>matakuliah::all()]);
     }
@@ -38,7 +38,7 @@ class matakuliahController extends Controller
     {
         $matakuliah = new matakuliah();
         $matakuliah->title=$input->title;
-        $matakuliah->keterangan =$input->keterangan;
+        $matakuliah->Keterangan =$input->Keterangan;
         $informasi=$matakuliah->save() ? 'Berhasil simpan data':'Gagal simpan data';
         return redirect('matakuliah')->with(['informasi'=>$informasi]);
     }
@@ -54,9 +54,9 @@ class matakuliahController extends Controller
     }
     public function update($id,Request $input)
     {
-        $matakuliah= matakuliah::find($id);
-        $matakuliah->title=$input->title;
-        $matakuliah->keterangan =$input->keterangan;
+        $matakuliah = matakuliah::find($id);
+       $matakuliah->title=$input->title;
+        $matakuliah->Keterangan =$input->Keterangan;
         $informasi=$matakuliah->save() ? 'Berhasil update data':'Gagal update data';
         return redirect('matakuliah')->with(['informasi'=>$informasi]);
     }
