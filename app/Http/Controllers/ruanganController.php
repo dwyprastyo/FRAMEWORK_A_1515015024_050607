@@ -35,6 +35,9 @@ class ruanganController extends Controller
     }
     public function simpan(Request $input)
     {
+        $this->validate($input,[
+        'title'=>'required',
+        ]);
         $ruangan = new ruangan();
         $ruangan->title=$input->title;
         $informasi=$ruangan->save() ? 'Berhasil simpan data':'Gagal simpan data';

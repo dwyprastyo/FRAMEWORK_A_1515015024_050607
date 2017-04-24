@@ -36,9 +36,13 @@ class matakuliahController extends Controller
     }
     public function simpan(Request $input)
     {
+        $this->validate($input,[
+        'title'=>'required',
+        'keterangan'=>'required',
+        ]);
         $matakuliah = new matakuliah();
         $matakuliah->title=$input->title;
-        $matakuliah->Keterangan =$input->Keterangan;
+        $matakuliah->keterangan =$input->keterangan;
         $informasi=$matakuliah->save() ? 'Berhasil simpan data':'Gagal simpan data';
         return redirect('matakuliah')->with(['informasi'=>$informasi]);
     }
@@ -56,7 +60,7 @@ class matakuliahController extends Controller
     {
         $matakuliah = matakuliah::find($id);
        $matakuliah->title=$input->title;
-        $matakuliah->Keterangan =$input->Keterangan;
+        $matakuliah->keterangan =$input->keterangan;
         $informasi=$matakuliah->save() ? 'Berhasil update data':'Gagal update data';
         return redirect('matakuliah')->with(['informasi'=>$informasi]);
     }

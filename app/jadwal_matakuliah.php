@@ -14,7 +14,7 @@ class jadwal_matkul extends Model
     }
 
     public function dosen_matakuliah(){
-    	return $this->belongsTo(dosen_matakuliah::class,'dosen_matakuliah_id'); //untuk membuat relasi  one to many  dengan tabel dosen_matakuliah
+    	return $this->belongsTo(dosen_matakuliah::class,'matakuliah_id'); //untuk membuat relasi  one to many  dengan tabel dosen_matakuliah
     }
 
     public function ruangan(){

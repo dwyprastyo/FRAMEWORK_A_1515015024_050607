@@ -15,7 +15,7 @@ class dosen_matakuliah extends Model
         return $this->belongsTo(matakuliah::class,'matakuliah_id');}//untuk membuat relasi  one to many  dengan tabel matakuliah
 
     public function jadwal_matkul(){
-        return $this->hasMany(jadwal_matkul::class,'dosen_matakuliah_id');//untuk membuat relasi  one to many  dengan tabel jadwal_matkul
+        return $this->hasMany(jadwal_matkul::class,'dosen_id');//untuk membuat relasi  one to many  dengan tabel jadwal_matkul
     }
     public function listDosenDanMatakuliah(){
         $out = [];

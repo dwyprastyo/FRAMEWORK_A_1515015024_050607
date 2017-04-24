@@ -25,6 +25,11 @@ public function tambah(){
 }
 
 public function simpan(Request $input){
+    $this->validate($input,[
+        'mahasiswa'=>'required',
+        'matakuliah'=>'required',
+        'ruangan'=>'required',
+        ]);
     $jadwal_matkul= new jadwal_matkul($input->only('ruangan_id','dosen_matakuliah_id','mahasiswa_id'));
         if ($jadwal_matkul->save()) $this->informasi = 'Berhasil Simpan Jadwal Mahasiswa ';
         return redirect('jadwal_matkul')->with(['informasi'=>$this->informasi]);

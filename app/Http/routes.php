@@ -42,7 +42,33 @@ Route::get('/', function () {
 //     	return "data dengan username {$pengguna->username} telah disimpan";
 //     });
 
-Route::get('pengguna','penggunacontroller@awal');
+
+
+Route::get('ujiHas','RelationshipRebornController@ujiHas');
+
+Route::get('ujiDoesntHave','RelationshipRebornController@ujiDoesntHave');
+
+Route::get('/',function()
+{
+	return \App\dosen_matakuliah::whereHas('dosen',function($query){
+		$query->where('nama','like','%s%');
+	})
+	->orWhereHas('matakuliah',function ($kueri)
+	{
+		$kueri->where('title','like','%a%');
+	})
+	->with('dosen')
+	->groupBy('dosen_id')
+	->get();
+});
+
+Route::get('/login','SesiController@form');
+Route::post('/login','SesiController@validasi');
+Route::get('/logout/lihat/{/login}','SesiController@logout');
+Route::get('/','SesiController@index');
+Route::group(['middleware'=>'AutentifikasiUser'],function()
+{
+	Route::get('pengguna','penggunacontroller@awal');
 Route::get('/pengguna/tambah','penggunacontroller@tambah');
 Route::get('pengguna/lihat/{pengguna}','penggunacontroller@lihat');
 Route::post('/pengguna/simpan','penggunacontroller@simpan');
@@ -97,6 +123,8 @@ Route::post('/dosen_matakuliah/simpan','dosen_matakuliahController@simpan');
 Route::get('/dosen_matakuliah/edit/{dosen_matakuliah}','dosen_matakuliahController@edit');
 Route::post('/dosen_matakuliah/edit/{dosen_matakuliah}','dosen_matakuliahController@update');
 Route::get('/dosen_matakuliah/hapus/{dosen_matakuliah}','dosen_matakuliahController@hapus');
+
+});
 
 // Route::get('/dosen','dosenController@awal');
 // Route::get('/dosen/tambah','dosenController@tambah');
