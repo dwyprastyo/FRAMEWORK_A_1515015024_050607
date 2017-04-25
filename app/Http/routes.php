@@ -64,11 +64,12 @@ Route::get('/',function()
 
 Route::get('/login','SesiController@form');
 Route::post('/login','SesiController@validasi');
-Route::get('/logout/lihat/{/login}','SesiController@logout');
+Route::get('/logout','SesiController@logout');
 Route::get('/','SesiController@index');
-Route::group(['middleware'=>'AutentifikasiUser'],function()
+
+Route::group(['Middleware'=>'AutentifikasiUser'],function()
 {
-	Route::get('pengguna','penggunacontroller@awal');
+Route::get('pengguna','penggunacontroller@awal');
 Route::get('/pengguna/tambah','penggunacontroller@tambah');
 Route::get('pengguna/lihat/{pengguna}','penggunacontroller@lihat');
 Route::post('/pengguna/simpan','penggunacontroller@simpan');
